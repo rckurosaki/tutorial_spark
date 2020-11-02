@@ -11,9 +11,32 @@ Essa base de dados contém dados de vendas de uma companhia fictícia chamada *N
 A base de dados completa contém 14 tabelas em um modelo relacional.  
 ![Diagrama base de dados](https://raw.githubusercontent.com/rckurosaki/tutorial_spark/main/img/diagrama_completo.png?token=AJN5KST36AILIXHSRPCNJTC7UBCKE)
 Para o nosso projeto, apenas utilizaremos 5 dessas tabelas. 
--> imagem 2
+
+![Tabelas utilizadas no projeto](https://raw.githubusercontent.com/rckurosaki/tutorial_spark/main/img/diagrama_blur.png?token=AJN5KSRAZOM5I4A62X6OS6K7UBCPA)
 Nosso objetivo final será agregar todas as compras, produtos e detalhes dos produtos realizadas por um cliente, tendo como resultado final um documento com as seguintes características:
--> imagem 3
+```
+{
+	CustomerID
+	CompanyName
+	Address
+	City
+	Region
+	Country
+	Orders{[
+		OrderID
+		OrderDetails{[
+			ProductID
+			Products{[
+				CategoryID
+				CategoryName
+				Description
+				ProductName
+				UnitPrice
+			]}
+		]}
+	]}
+}
+```
 
 
 
