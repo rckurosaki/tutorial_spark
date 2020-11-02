@@ -68,7 +68,7 @@ spark = SparkSession.builder.appName("spark_tutorial").getOrCreate()
 ```
 
 #### Leitura dos arquivos
-O próximo passo será ler os arquivos e transformar as tuplas em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.
+O próximo passo será ler os arquivos e transformar as "tabelas" em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.
 ```
 raw_orders = spark.read.option("header", True).csv("./orders.csv")
 raw_customers = spark.read.option("header", True).csv("./customers.csv")
@@ -80,7 +80,7 @@ raw_order_details = spark.read.option("header", True).csv("./order-details.csv")
 Neste caso, usamos `option("header", True)` para que as colunas de cada tabela sejam incorporadas no DataFrame. Dessa maneira, podemos realizar operações com mais facilidade nos dados. 
 Por fim, `.csv("file.csv")` denota o formato do arquivo que queremos ler. 
 
-Para ter uma breve noção do conteúdo dos DataFrames, podemos utilizar a função `show()`.
+Para ter uma breve noção do conteúdo dos DataFrames, podemos utilizar a função `show()` e passar como argumento a quantidade de tuplas que queremos como retorno.
 Por exemplo:
 `raw_orders.show(3)` deverá retornar uma tabela similar a essa:
 ```
@@ -98,7 +98,7 @@ Conseguimos vizualizar as três primeiras tuplas existente em `raw_orders`.
 Podemos fazer o mesmo com qualquer outro DataFrame para olharmos as colunas e que tipo de dados existem em cada tabela.
 
 #### Selecionando apenas as colunas necessárias
-Para o nosso projeto, não iremos utilizar todas as colunas existentes das tabelas que temos. Portanto, devemos criar um novo DataFrame apenas com as colunas que serão necessárias.
+Para o nosso projeto, não iremos utilizar todos os dados existentes das tabelas que temos. Portanto, devemos criar um novo DataFrame com apenas as colunas necessárias.
 
 Primeiramente, criamos uma lista para cada tabela com os nomes das colunas que desejamos manter.
 ```
