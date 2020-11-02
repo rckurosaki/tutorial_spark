@@ -43,3 +43,77 @@ Nosso objetivo final será agregar todas as compras, produtos e detalhes dos pro
 	]}
 }
 ```
+
+### Implementação
+
+---
+
+#### Obter os arquivos necessários
+Inicialmente, temos que fazer o download de todos os arquivos csv que iremos utilizar.
+Para isso, utilizamos o software `wget`.
+```
+wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/orders.csv
+wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/customers.csv
+wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/products.csv
+wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/categories.csv
+wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/order-details.csv
+```
+Neste caso, fizemos o download de todas as tuplas das 5 tabelas que iremos utilizar.
+
+#### Criação de uma sessão Spark
+É necessário criar uma sessão Spark para podermos utilizar as estruturas de dados convenientes para o projeto.
+```
+from pyspark.sql.session import SparkSession
+spark = SparkSession.builder.appName("spark_tutorial").getOrCreate()
+```
+
+#### Leitura dos arquivos
+O próximo passo será ler os arquivos e transformar as tuplas em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.
+```
+raw_orders = spark.read.option("header", True).csv("./orders.csv")
+raw_customers = spark.read.option("header", True).csv("./customers.csv")
+raw_products = spark.read.option("header", True).csv("./products.csv")
+raw_categories = spark.read.option("header", True).csv("./categories.csv")
+raw_order_details = spark.read.option("header", True).csv("./order-details.csv")
+```
+`spark.read` é utilizado para a leitura de arquivos.
+Neste caso, usamos `option("header", True)` para que as colunas de cada tabela sejam incorporadas no DataFrame. Dessa maneira, podemos realizar operações com mais facilidade nos dados. 
+Por fim, `.csv("file.csv")` denota o formato do arquivo que queremos ler. 
+
+Para ter uma breve noção do conteúdo dos DataFrames, podemos utilizar a função `show()`.
+Por exemplo:
+`raw_orders.show(3)` deverá retornar uma tabela similar a essa:
+```
++-------+----------+----------+--------------------+--------------------+--------------------+-------+-------+--------------------+------------------+--------+--------------+--------------+-----------+
+|OrderID|CustomerID|EmployeeID|           OrderDate|        RequiredDate|         ShippedDate|ShipVia|Freight|            ShipName|       ShipAddress|ShipCity|    ShipRegion|ShipPostalCode|ShipCountry|
++-------+----------+----------+--------------------+--------------------+--------------------+-------+-------+--------------------+------------------+--------+--------------+--------------+-----------+
+|  10248|     VINET|         5|1996-07-04 00:00:...|1996-08-01 00:00:...|1996-07-16 00:00:...|      3|  32.38|Vins et alcools C...|59 rue de l'Abbaye|   Reims|          NULL|         51100|     France|
+|  10249|     TOMSP|         6|1996-07-05 00:00:...|1996-08-16 00:00:...|1996-07-10 00:00:...|      1|  11.61|  Toms Spezialitäten|     Luisenstr. 48| Münster|          NULL|         44087|    Germany|
+|  10250|     HANAR|         4|1996-07-08 00:00:...|1996-08-05 00:00:...|1996-07-12 00:00:...|      2|  65.83|       Hanari Carnes|       Rua do Paço|      67|Rio de Janeiro|            RJ|  05454-876|
++-------+----------+----------+--------------------+--------------------+--------------------+-------+-------+--------------------+------------------+--------+--------------+--------------+-----------+
+only showing top 3 rows
+
+```
+Conseguimos vizualizar as três primeiras tuplas existente em `raw_orders`. 
+Podemos fazer o mesmo com qualquer outro DataFrame para olharmos as colunas e que tipo de dados existem em cada tabela.
+
+#### Selecionando apenas as colunas necessárias
+Para o nosso projeto, não iremos utilizar todas as colunas existentes das tabelas que temos. Portanto, devemos criar um novo DataFrame apenas com as colunas que serão necessárias.
+
+Primeiramente, criamos uma lista para cada tabela com os nomes das colunas que desejamos manter.
+```
+columns_orders = ['OrderID', 'CustomerID']
+columns_customers = ['CustomerID', 'CompanyName', 'Address', 'City', 'Region', 'Country']
+columns_products = ['ProductID', 'ProductName', 'CategoryID', 'QuantityPerUnity', 'UnitPrice']
+columns_categories = ['CategoryID', 'CategoryName', 'Description']
+columns_order_details = ['OrderID', 'ProductID']
+```
+
+Depois, para cada tabela, criamos uma nova tabela que armazena apenas as colunas relevantes.
+```
+orders = raw_orders.select([col for col in raw_orders.columns if col in columns_orders])
+customers = raw_customers.select([col for col in raw_customers.columns if col in columns_customers])
+products = raw_products.select([col for col in raw_products.columns if col in columns_products])
+categories = raw_categories.select([col for col in raw_categories.columns if col in columns_categories])
+order_details = raw_order_details.select([col for col in raw_order_details.columns if col in columns_order_details])
+```
