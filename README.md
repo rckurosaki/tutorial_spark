@@ -10,7 +10,12 @@ Essa base de dados contém dados de vendas de uma companhia fictícia chamada *N
 ### A base de dados
 A base de dados completa contém 14 tabelas em um modelo relacional.  
 ![Diagrama base de dados](/img/diagrama_completo.png)
-Para o nosso projeto, apenas utilizaremos 5 dessas tabelas. 
+Para o nosso projeto, apenas utilizaremos 5 dessas tabelas, sendo elas:
+* customers
+* orders
+* order_details 
+* products
+* categories
 
 ![Tabelas utilizadas no projeto](/img/diagrama_blur.png)
 Nosso objetivo final será agregar todas as compras, produtos e detalhes dos produtos realizadas por um cliente, tendo como resultado final um documento com as seguintes características:
