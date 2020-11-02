@@ -44,11 +44,9 @@ Nosso objetivo final será agregar todas as compras, produtos e detalhes dos pro
 }
 ```
 
-### Implementação
+## Implementação
 
----
-
-#### Obter os arquivos necessários
+### Obter os arquivos necessários
 Inicialmente, temos que fazer o download de todos os arquivos csv que iremos utilizar.
 Para isso, utilizamos o software `wget`.
 ```
@@ -60,14 +58,14 @@ wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/order-detai
 ```
 Neste caso, fizemos o download de todas as tuplas das 5 tabelas que iremos utilizar.
 
-#### Criação de uma sessão Spark
+### Criação de uma sessão Spark
 É necessário criar uma sessão Spark para podermos utilizar as estruturas de dados convenientes para o projeto.
 ```
 from pyspark.sql.session import SparkSession
 spark = SparkSession.builder.appName("spark_tutorial").getOrCreate()
 ```
 
-#### Leitura dos arquivos
+### Leitura dos arquivos
 O próximo passo será ler os arquivos e transformar as "tabelas" em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.
 ```
 raw_orders = spark.read.option("header", True).csv("./orders.csv")
@@ -97,7 +95,7 @@ only showing top 3 rows
 Conseguimos vizualizar as três primeiras tuplas existente em `raw_orders`. 
 Podemos fazer o mesmo com qualquer outro DataFrame para olharmos as colunas e que tipo de dados existem em cada tabela.
 
-#### Selecionando apenas as colunas necessárias
+### Selecionando apenas as colunas necessárias
 Para o nosso projeto, não iremos utilizar todos os dados existentes das tabelas que temos. Portanto, devemos criar um novo DataFrame com apenas as colunas necessárias.
 
 Primeiramente, criamos uma lista para cada tabela com os nomes das colunas que desejamos manter.
@@ -138,7 +136,7 @@ only showing top 3 rows
 ```
 Antes, a tabela *Orders* continha 14 colunas. Agora contém apenas 2. Da mesma forma, filtramos todas as outras tabelas da mesma maneira selecionando apenas o que nos é relevante.
 
-#### Criando join entre tabelas
+### Criando join entre tabelas
 Agora que temos apenas os dados que nos é relevante para o projeto, devemos começar a agregação de dados para poder criar o documento JSON.
 O primeiro passo será fazer um `join` entre as tabelas *categories* e *products*. 
 A maneira mais simples de se conseguir essa junção é usar comando SQL!
