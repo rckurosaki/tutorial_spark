@@ -117,3 +117,56 @@ products = raw_products.select([col for col in raw_products.columns if col in co
 categories = raw_categories.select([col for col in raw_categories.columns if col in columns_categories])
 order_details = raw_order_details.select([col for col in raw_order_details.columns if col in columns_order_details])
 ```
+
+O método `select` tem a função similar do SELECT em SQL. 
+Como parâmetro do método, passamos uma *list comprehension* onde, em um laço de repetição `for`, é verificado se cada coluna da tabela original está presente na lista de colunas que criamos anteriormente. Caso não esteja, ele descartará a coluna verificada. 
+
+Podemos verificar o resultado novamente utilizando o método `show()`
+
+`orders.show(3)`
+
+Que retornará:
+```
++-------+----------+
+|OrderID|CustomerID|
++-------+----------+
+|  10248|     VINET|
+|  10249|     TOMSP|
+|  10250|     HANAR|
++-------+----------+
+only showing top 3 rows
+```
+Antes, a tabela *Orders* continha 14 colunas. Agora contém apenas 2. Da mesma forma, filtramos todas as outras tabelas da mesma maneira selecionando apenas o que nos é relevante.
+
+#### Criando join entre tabelas
+Agora que temos apenas os dados que nos é relevante para o projeto, devemos começar a agregação de dados para poder criar o documento JSON.
+O primeiro passo será fazer um `join` entre as tabelas *categories* e *products*. 
+A maneira mais simples de se conseguir essa junção é usar comando SQL!
+Para poder consultar as tabelas usando comandos SQL, devemos inicialmente criar um buffer em memória que nos permite rodar *queries* nessas tabelas temporárias. 
+```
+categories.createOrReplaceTempView("tmp_categories")
+products.createOrReplaceTempView("tmp_products")
+``` 
+Neste caso, criamos 2 tabelas temporárias. Uma para `categories` com o nome `tmp_categories` e uma para `products` com o nome `tmp_products`.
+
+Dessa maneira conseguimos fazer o `join` nas duas tabelas e armazenar o resultado em um novo DataFrame.
+```
+categories_orders_join = spark.sql("SELECT tmp_categories.CategoryID, \
+tmp_categories.CategoryName, tmp_categories.Description, tmp_products.ProductID, \
+tmp_products.ProductName, tmp_products.UnitPrice \
+FROM tmp_categories, tmp_products \
+WHERE tmp_products.CategoryID ==  tmp_categories.CategoryID ORDER BY ProductID"\
+)
+```
+
+Execurando `categories_orders_join.show(3)` obtemos:
+```
++----------+--------------+----------------+---------+--------------+---------+
+|CategoryID|  CategoryName|     Description|ProductID|   ProductName|UnitPrice|
++----------+--------------+----------------+---------+--------------+---------+
+|         1|     Beverages|     Soft drinks|        1|          Chai|    18.00|
+|         8|       Seafood|Seaweed and fish|       10|         Ikura|    31.00|
+|         4|Dairy Products|         Cheeses|       11|Queso Cabrales|    21.00|
++----------+--------------+----------------+---------+--------------+---------+
+only showing top 3 rows
+```
