@@ -135,6 +135,8 @@ Que retornará:
 only showing top 3 rows
 ```
 Antes, a tabela *Orders* continha 14 colunas. Agora contém apenas 2. Da mesma forma, filtramos todas as outras tabelas da mesma maneira selecionando apenas o que nos é relevante.
+Esse é o resultado que temos:
+![Clean tables](/img/clean_tables.png)
 
 ### Criando join entre tabelas
 Agora que temos apenas os dados que nos é relevante para o projeto, devemos começar a agregação de dados para poder criar o documento JSON.
