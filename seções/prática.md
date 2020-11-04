@@ -98,7 +98,7 @@ Podemos fazer o mesmo com qualquer outro DataFrame para olharmos as colunas e qu
 ### Selecionando apenas as colunas necessárias
 Para o nosso projeto, não iremos utilizar todos os dados existentes das tabelas que temos. Portanto, devemos criar um novo DataFrame com apenas as colunas necessárias.
 
-Primeiramente, criamos uma lista para cada tabela com os nomes das colunas que desejamos manter.
+Primeiramente, criamos uma **lista** para cada tabela com os nomes das colunas que desejamos manter.
 ```
 columns_orders = ['OrderID', 'CustomerID']
 columns_customers = ['CustomerID', 'CompanyName', 'Address', 'City', 'Region', 'Country']
@@ -117,7 +117,7 @@ order_details = raw_order_details.select([col for col in raw_order_details.colum
 ```
 
 O método `select` tem a função similar do SELECT em SQL. 
-Como parâmetro do método, passamos uma *list comprehension* onde, em um laço de repetição `for`, é verificado se cada coluna da tabela original está presente na lista de colunas que criamos anteriormente. Caso não esteja, ele descartará a coluna verificada. 
+Como parâmetro do método, passamos uma *list comprehension* onde, em um laço de repetição `for`, selecionamos apenas as colunas contidas nas **listas** criadas anteriormente. 
 
 Podemos verificar o resultado novamente utilizando o método `show()`
 
@@ -135,6 +135,7 @@ Que retornará:
 only showing top 3 rows
 ```
 Antes, a tabela *Orders* continha 14 colunas. Agora contém apenas 2. Da mesma forma, filtramos todas as outras tabelas da mesma maneira selecionando apenas o que nos é relevante.
+
 Esse é o resultado que temos:
 ![Clean tables](/img/clean_tables.png)
 
