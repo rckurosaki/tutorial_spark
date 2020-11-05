@@ -98,7 +98,7 @@ Podemos fazer o mesmo com qualquer outro DataFrame para olharmos as colunas e qu
 ### Selecionando apenas as colunas necessárias
 Para o nosso projeto, não iremos utilizar todos os dados existentes das tabelas que temos. Portanto, devemos criar um novo DataFrame com apenas as colunas necessárias.
 
-Primeiramente, criamos uma **lista** para cada tabela com os nomes das colunas que desejamos manter.
+Primeiramente, criamos uma [lista](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) para cada tabela com os nomes das colunas que desejamos manter.
 ```
 columns_orders = ['OrderID', 'CustomerID']
 columns_customers = ['CustomerID', 'CompanyName', 'Address', 'City', 'Region', 'Country']
