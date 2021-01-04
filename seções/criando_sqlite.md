@@ -17,11 +17,11 @@ connection = sqlite3.connect('NorthWind.db')
 Lemos, então, os dados dos arquivos csv e os armazenamos em dataframes.
 Note que para cada csv, nós criamos um novo dataframe correspondente àquele arquivo. 
 ```
-orders = pd.read_csv('./refactor_csv/orders.csv', sep='|')
-customers = pd.read_csv('./refactor_csv/customers.csv', sep='|')
-categories = pd.read_csv('./refactor_csv/categories.csv', sep='|')
-order_details = pd.read_csv('./refactor_csv/order-details.csv', sep='|')
-products = pd.read_csv('./refactor_csv/products.csv', sep='|')
+orders = pd.read_csv('./orders.csv', sep='|')
+customers = pd.read_csv('./customers.csv', sep='|')
+categories = pd.read_csv('./categories.csv', sep='|')
+order_details = pd.read_csv('./order-details.csv', sep='|')
+products = pd.read_csv('./products.csv', sep='|')
 ```
 
 Por fim, cada dataframe irá se tornar uma tabela no modelo relacional. 
