@@ -1,5 +1,25 @@
 # Prática
 
+## Softwares utilizados
+Testado e implementado no sistema operacioal Pop!_ OS 20.10 
+ - pyspark version 3.0.1
+ - python version 3.8.6
+
+
+## Executar
+Devemos primeiramente setar as variáveis de ambiente.
+```
+export PYSPARK_PYTHON=python3
+```
+
+Para esse projeto, iremos utilizar o spark shell. Para isso, devemos executar no terminal:
+```
+pyspark --conf spark.executor.extraClassPath=sqlite-jdbc-3.34.0.jar --driver-class-path sqlite-jdbc-3.34.0.jar --jars sqlite-jdbc-3.34.0.jar
+```
+
+Devemos fornecer o arquivo jar que será utilizado como driver para a comunicação com o banco de dados SQLite. Esse arquivo pode ser encontrado neste repositório.
+
+
 ### Projeto
 Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL (**E**xtract, **T**ransform, **L**oad). Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos armazená-los em outro lugar.
 A ideia será extrair os dados que estão em um modelo relacional (banco SQLite), fazer uma agregação para transformar em um modelo de documento e salvar em um arquivo JSON.
