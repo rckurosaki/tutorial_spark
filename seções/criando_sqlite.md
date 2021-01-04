@@ -1,4 +1,4 @@
-## Montando um banco de dados realacional  SQLite
+## Montando um banco de dados relacional SQLite
 Para montarmos o banco de dados, precisamos dos arquivos csv contendo os dados necessários. Esses arquivos podem ser encontrados ![aqui](/arquivos/csv).
 
 Iremos utilizar um script python para criar o banco NorthWind.db.
