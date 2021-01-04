@@ -2,7 +2,7 @@
 
 ### Projeto
 Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL (**E**xtract, **T**ransform, **L**oad). Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos armazená-los em outro lugar.
-A ideia será extrair os dados que estão em um modelo relacional, fazer uma agregação para transformar em um modelo de documento e salvar em um arquivo JSON.
+A ideia será extrair os dados que estão em um modelo relacional (banco SQLite), fazer uma agregação para transformar em um modelo de documento e salvar em um arquivo JSON.
 Esse projeto irá utilizar os dados da *[Northwind sample database](https://docs.yugabyte.com/latest/sample-data/northwind/)*. 
 Essa base de dados contém dados de vendas de uma companhia fictícia chamada *Northwind Traders*. Essa empresa importa e exporta produtos alimentícios por todo o mundo.
 
@@ -46,37 +46,34 @@ Nosso objetivo final será agregar todas as compras, produtos e detalhes dos pro
 
 ## Implementação
 
-### Obter os arquivos necessários
-Inicialmente, temos que fazer o download de todos os arquivos csv que iremos utilizar.
-Para isso, utilizamos o software `wget`.
-```
-wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/orders.csv
-wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/customers.csv
-wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/products.csv
-wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/categories.csv
-wget https://raw.githubusercontent.com/tmcnab/northwind-mongo/master/order-details.csv
-```
-Neste caso, fizemos o download de todas as tuplas das 5 tabelas que iremos utilizar.
+### Banco de dados SQLite
+O banco SQLite se chama NorthWind.db e está disponível neste repositório. Ele contém apenas as tabelas que serão usadas neste tutorial.
+Caso queira aprender como criar esse banco de dados, veja o **Apêndice A** - Montando um banco de dados realacional com SQLite.
+
 
 ### Criação de uma sessão Spark
-É necessário criar uma sessão Spark para podermos utilizar as estruturas de dados convenientes para o projeto.
+É necessário importar os módulos que serão utilizados e criar uma sessão Spark para podermos utilizar as estruturas de dados convenientes para o projeto.
 ```
+from pyspark import SparkContext
+from pyspark.sql import SQLContext
 from pyspark.sql.session import SparkSession
-spark = SparkSession.builder.appName("spark_tutorial").getOrCreate()
+from pyspark.sql.functions import collect_list, struct
+
+sc = SparkContext.getOrCreate()
+sqlCtx = SQLContext(sc)
 ```
 
-### Leitura dos arquivos
-O próximo passo será ler os arquivos e transformar as "tabelas" em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.
+### Leitura das tabelas
+O próximo passo será extrair as tuplas das tabelas do banco de dados SQLite e transformá-las em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.
 ```
-raw_orders = spark.read.option("header", True).csv("./orders.csv")
-raw_customers = spark.read.option("header", True).csv("./customers.csv")
-raw_products = spark.read.option("header", True).csv("./products.csv")
-raw_categories = spark.read.option("header", True).csv("./categories.csv")
-raw_order_details = spark.read.option("header", True).csv("./order-details.csv")
+raw_orders = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="orders").load()
+raw_customers = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="customers").load()
+raw_products = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="products").load()
+raw_categories = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="categories").load()
+raw_order_details = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="order_details").load()
 ```
-`spark.read` é utilizado para a leitura de arquivos.
-Neste caso, usamos `option("header", True)` para que as colunas de cada tabela sejam incorporadas no DataFrame. Dessa maneira, podemos realizar operações com mais facilidade nos dados. 
-Por fim, `.csv("file.csv")` denota o formato do arquivo que queremos ler. 
+`sqlContext.read.format("jdbc")` é utilizado para ler de um banco de dados relacional.
+Em `options` nós passamos em `url` o tipo de banco relacional juntamente com o caminho para o arquivo do banco SQLite. Devemos fornecer também o driver a ser utilizado para a leitura do banco e, por fim, em `dbtable`, fornecemos a tabela que iremos ler do banco. 
 
 Para ter uma breve noção do conteúdo dos DataFrames, podemos utilizar a função `show()` e passar como argumento a quantidade de tuplas que queremos como retorno.
 Por exemplo:
