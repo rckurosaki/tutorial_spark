@@ -7,3 +7,4 @@
 * [Prática](/seções/prática.md)
 * Glossário
 * Referências
+* [Apêndice A](/seções/criando_sqlite.md)
