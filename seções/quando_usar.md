@@ -4,12 +4,15 @@ A principal motivação de se usar o Spark é quanto temos que processar uma qua
 
 #### Quem usa?
 **Cientista de dados**
+![Ciência de dados](/img/data_science.jpg)
 São responsáveis por tirar insights através da análise de dados. Para que isso possa ser feito, o Spark ajuda os cientistas de dados dando suporte durante grande parte do processo de análise como o acesso aos dados assim como a integração com a aprendizagem de máquina e visualização de dados.
 
 **Engenheiro de dados**
+![Engenheiro de dados](/img/data_engineering.jpg)
 São responsáveis por coletar, tratar e armazenar os dados. Spark ajuda os engenheiros de dados abstraindo a complexidade ao acesso de dados. Ele oferece frameworks fazendo com que o acesso aos dados, seja ele de um arquivo csv, json ou mesmo de um banco de dados relacional, seja muito simples.
 
 **Indústria de jogos**
+![Indústria de jogos](/img/game_industry.jpg)
 O processamento de dados para descobrir padrões e também para o processamento de dados em tempo real de eventos dos jogos online. São características muito importantes para a indústria, pois dessa maneira pode oferecer uma experiência de jogo mais prazerosa para o jogador como também melhorar anúncios personalizados, por exemplo.
 
 Esses são apenas alguns exemplos de quem pode se beneficiar muito com o uso do Spark. 
