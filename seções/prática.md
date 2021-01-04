@@ -168,3 +168,67 @@ Execurando `categories_orders_join.show(3)` obtemos:
 +----------+--------------+----------------+---------+--------------+---------+
 only showing top 3 rows
 ```
+
+### Agregando tabelas
+Agora iremos agregar as tabelas.
+Primeiramente iremos agregar os detalhes dos pedidos (order_details) com o DataFrame criado anteriormente (categories_orders_join).
+
+```
+orders_product_join = order_details.join( categories_orders_join.groupBy('ProductID').agg(collect_list(struct(categories_orders_join.columns[0], \
+categories_orders_join.columns[1], categories_orders_join.columns[2], categories_orders_join.columns[4], \
+categories_orders_join.columns[5])).alias("Products")), ["ProductID"] )
+```
+
+A função `agg()` irá agregar as colunas de *categories_orders_join* agrupados por *ProductID* e juntar com o dataframe *order_details* criando uma nova estrutura de dados que chamamos de `orders_product_join`.
+
+Executando `orders_product_join.show(3, False)` obtemos:
+
+```
++---------+-------+-------------------------------------------------------+
+|ProductID|OrderID|Products                                               |
++---------+-------+-------------------------------------------------------+
+|31       |10253  |[[4, Dairy Products, Cheeses, Gorgonzola Telino, 12.5]]|
+|31       |10272  |[[4, Dairy Products, Cheeses, Gorgonzola Telino, 12.5]]|
+|31       |10273  |[[4, Dairy Products, Cheeses, Gorgonzola Telino, 12.5]]|
++---------+-------+-------------------------------------------------------+
+only showing top 3 rows
+```
+
+Podemos notar que agora temos uma lista de produtos para cada OrderID.
+
+Devemos agora fazer a agregação da tabela `orders_product_join` com a tabela `orders`. Para isso executamos:
+
+```
+new_order = orders.join( orders_product_join.groupBy("OrderID").agg(collect_list(struct(orders_product_join.columns[0], orders_product_join.columns[2])).alias("Orders_details")), ["OrderID"] )
+```
+
+A lógica é a mesma da usada anteriormente, com a exceção das tabelas a serem manipuladas. Dessa vez, o que fizemos foi para cada pedido em `orders`, nós incluímos uma lista de produtos.
+Executando `new_order.show(3, False)` temos uma visão mais clara:
+
+```
++-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|OrderID|CustomerID|Orders_details                                                                                                                                                                                                                                                                                                                                                                                                                                   |
++-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|10362  |BONAP     |[[54, [[6, Meat/Poultry, Prepared meats, Tourtière, 7.45]]], [51, [[7, Produce, Dried fruit and bean curd, Manjimup Dried Apples, 53.0]]], [25, [[3, Confections, Desserts, candies, and sweet breads, NuNuCa Nuß-Nougat-Creme, 14.0]]]]                                                                                                                                                                                                         |
+|10623  |FRANK     |[[19, [[3, Confections, Desserts, candies, and sweet breads, Teatime Chocolate Biscuits, 9.2]]], [35, [[1, Beverages, Soft drinks, coffees, teas, beers, and ales, Steeleye Stout, 18.0]]], [24, [[1, Beverages, Soft drinks, coffees, teas, beers, and ales, Guaraná Fantástica, 4.5]]], [21, [[3, Confections, Desserts, candies, and sweet breads, Sir Rodney's Scones, 10.0]]], [14, [[7, Produce, Dried fruit and bean curd, Tofu, 23.25]]]]|
+|10817  |KOENE     |[[26, [[3, Confections, Desserts, candies, and sweet breads, Gumbär Gummibärchen, 31.23]]], [40, [[8, Seafood, Seaweed and fish, Boston Crab Meat, 18.4]]], [38, [[1, Beverages, Soft drinks, coffees, teas, beers, and ales, Côte de Blaye, 263.5]]], [62, [[3, Confections, Desserts, candies, and sweet breads, Tarte au sucre, 49.3]]]]                                                                                                      |
++-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+only showing top 3 rows
+```
+
+Por fim, devemos associar cada pedido a um cliente. Conseguimos fazer isso realizando uma última agregação entre o cliente e a tabela `new_order`.
+
+```
+customer_agg = customers.join( new_order.groupBy('CustomerID').agg(collect_list(struct(new_order.columns[0], new_order.columns[2])).alias('Orders')), ['CustomerID'] )
+```
+
+### Salvando em um arquivo JSON
+
+Temos então a nossa estrutura agregada de dados montada! Falta apenas salvarmos todas as tuplas em objetos json.
+Conseguimos fazer isso executando:
+
+```
+customer_agg.coalesce(1).write.format('json').save('./customers_agg.json')
+```
+
+Quando executado tal comando, no diretório atual será criada um diretório com nome `customers_agg` contendo o arquivo JSON com todos os dados agregados.
