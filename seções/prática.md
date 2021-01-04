@@ -73,7 +73,7 @@ Nosso objetivo final será agregar todas as compras, produtos e detalhes dos pro
 
 ### Banco de dados SQLite
 O banco SQLite se chama NorthWind.db e está disponível ![neste repositório](/arquivos). Ele contém apenas as tabelas que serão usadas neste tutorial.
-Caso queira aprender como criar esse banco de dados, veja o ![Apêndice A - Montando um banco de dados realacional SQLite](seções/criando_sqlite.md).
+Caso queira aprender como criar esse banco de dados, veja o [Apêndice A - Montando um banco de dados realacional SQLite](criando_sqlite.md).
 
 
 ### Criação de uma sessão Spark
