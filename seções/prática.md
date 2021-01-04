@@ -5,6 +5,11 @@ Testado e implementado no sistema operacioal Pop!_ OS 20.10
  - pyspark version 3.0.1
  - python version 3.8.6
 
+### Instalação do pyspark
+Com o python3 instalado no sistema, podemos instalar o pyspark facilmente com o comando:
+```
+pip3 install pyspark
+```
 
 ## Executar
 Devemos primeiramente setar as variáveis de ambiente.
@@ -20,7 +25,7 @@ pyspark --conf spark.executor.extraClassPath=sqlite-jdbc-3.34.0.jar --driver-cla
 Devemos fornecer o arquivo jar que será utilizado como driver para a comunicação com o banco de dados SQLite. Esse arquivo pode ser encontrado neste repositório.
 
 
-### Projeto
+## Projeto
 Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL (**E**xtract, **T**ransform, **L**oad). Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos armazená-los em outro lugar.
 A ideia será extrair os dados que estão em um modelo relacional (banco SQLite), fazer uma agregação para transformar em um modelo de documento e salvar em um arquivo JSON.
 Esse projeto irá utilizar os dados da *[Northwind sample database](https://docs.yugabyte.com/latest/sample-data/northwind/)*. 
