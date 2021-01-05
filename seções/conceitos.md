@@ -26,4 +26,4 @@ No modo cluster, o Spark funciona de maneira similar ao Hadoop com a arquitetura
 O driver mantém os metadados e as outras informações da aplicação, cuidando da distribuição dos dados nos diferentes nós e monitorando o trabalho dos processos subordinados.
 Os nós subordinados executam os códigos e os reporta de volta para seu coordenador.
 
-[Arquitetura Spark](/img/spark_arch.png)
+![Arquitetura Spark](/img/spark_arch.png)
