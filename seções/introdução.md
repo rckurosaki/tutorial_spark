@@ -1,4 +1,4 @@
-*Introdução**
+# Introdução
 
 Neste tutorial iremos tentar apresentar e utilizar na prática o Apache Spark. O objetivo deste documento é passar o caminho das pedras para quem deseja iniciar a utilização do Spark em seus projetos de Big-Data.
 
