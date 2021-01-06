@@ -114,7 +114,7 @@ Por exemplo:
 only showing top 3 rows
 
 ```
-Conseguimos vizualizar as três primeiras tuplas existente em `raw_orders`. 
+Conseguimos visualizar as três primeiras tuplas existente em `raw_orders`. 
 Podemos fazer o mesmo com qualquer outro DataFrame para olharmos as colunas e que tipo de dados existem em cada tabela.
 
 ### Selecionando apenas as colunas necessárias
