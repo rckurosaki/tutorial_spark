@@ -1,19 +1,19 @@
 # Conceitos
 
-A arquitetura do Apache Spark é composta por duas principais abstrações:
-* RDD (Resilient Distributed Dataset)
-* DAG (Directed Acyclic Graph)
+A arquitetura do Apache Spark™ é composta por duas principais abstrações:
+* RDD (*Resilient Distributed Dataset*)
+* DAG (*Directed Acyclic Graph*)
 
 ## Resilient Distributed Dataset - RDD
-* Resilient: Tolerância a falhas, sendo capaz de recomputar partições danificadas provenientes de mau funcionamento dos nós;
-* Distributed: Distribuído em multiplos nós de um cluster;
-* Dataset: Representa as coleções de dados que serão processados. 
+* *Resilient*: Tolerância a falhas, sendo capaz de recomputar partições danificadas provenientes de mau funcionamento dos nós;
+* *Distributed*: Distribuído em multiplos nós de um cluster;
+* *Dataset*: Representa as coleções de dados que serão processados. 
 
 RDD é um dos principais tópicos para se entender como o Spark funciona. 
-Resumidamente falando, são coleções de dados para apenas leitura que são particionados e distribuídos para diferentes nós de um cluster para poderem ser processados paralelamente. Essas coleções de dados são imutáveis e, para cada operação que envolva alguma mudança nos dados, uma nova RDD deve ser criada.
+Resumidamente falando, são coleções de dados para apenas leitura que são particionados e distribuídos para diferentes nós de um *cluster* para poderem ser processados paralelamente. Essas coleções de dados são imutáveis e, para cada operação que envolva alguma mudança nos dados, uma nova RDD deve ser criada.
 Há duas maneiras de se criar RDDs:
 A primeira maneira tem como fonte um de um banco de dados, arquivos do sistema local, hdfs, entre outros.
-A segunda maneira é copiar elementos de coleções para formar um dataset distribuído que possa ser processado em paralelo.
+A segunda maneira é copiar elementos de coleções para formar um *dataset* distribuído que possa ser processado em paralelo.
 
 As principais características do RDD são:
 * **Computação em memória**: Os dados são computados em memórias RAM distribuídas, o que aumenta significativamente a performance computacional. 
@@ -25,13 +25,13 @@ As principais características do RDD são:
 #### Operações
 RDD suporta dois tipos de operações: **Transformações** e **Ações**.
 
-Transformações são funções que recebem um RDD como input e produz uma ou mais RDDs como output. Dessa maneira, as transformações criam novos datasets a partir de um dataset existente.
+Transformações são funções que recebem um RDD como *input* e produz uma ou mais RDDs como *output*. Dessa maneira, as transformações criam novos *datasets* a partir de um *dataset* existente.
 
-Ações retornam o resultado final de uma computação RDD. Esse resultado é retornado para o driver do programa ou então escrito em um arquivo ou banco de dados externo. Ações são operações RDD que produzem valores "não RDD", ou seja, ele "*materializa*" um valor em um programa Spark. 
+Ações retornam o resultado final de uma computação RDD. Esse resultado é retornado para o *driver* do programa ou então escrito em um arquivo ou banco de dados externo. Ações são operações RDD que produzem valores "não RDD", ou seja, ele "*materializa*" um valor em um programa Spark. 
 
 
 ## Directed Acyclic Graph (DAG)
-O driver Spark identifica as tarefas que podem ser computadas paralelamente e, a partir disso, contrói uma lógica de operações DAG.
+O *driver* Spark identifica as tarefas que podem ser computadas paralelamente e, a partir disso, contrói uma lógica de operações DAG.
 DAG é um conjunto de vértices e arestas, onde os vértices representam os RDDs e as arestas representam as operações que serão aplicadas nesses RDDs. Todas as arestas partem de uma operção anterior para uma próxima na sequência. 
 Ela é um grafo finito direcionado sem ciclos. Esse modelo é uma generalização do modelo MapReduce, porém com otimizações.
 
@@ -45,7 +45,7 @@ No modo local, como o próprio nome diz, rodaremos o Spark no nosso computador o
 
 **Cluster**
 No modo cluster, o Spark funciona de maneira similar ao Hadoop com a arquitetura Coordenador-Subordinado. O Coordenador é chamado de *driver* e o Subordinado de *Executor*.
-O driver mantém os metadados e as outras informações da aplicação, cuidando da distribuição dos dados nos diferentes nós e monitorando o trabalho dos processos subordinados.
+O *driver* mantém os metadados e as outras informações da aplicação, cuidando da distribuição dos dados nos diferentes nós e monitorando o trabalho dos processos subordinados.
 Os nós subordinados executam os códigos e os reporta de volta para seu coordenador.
 
 ![Arquitetura Spark](/img/spark_arch.png)

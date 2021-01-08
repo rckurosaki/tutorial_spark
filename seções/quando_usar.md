@@ -9,11 +9,11 @@ São responsáveis por tirar insights através da análise de dados. Para que is
 
 **Engenheiro de dados**
 ![Engenheiro de dados](/img/data_engineering.jpg)
-São responsáveis por coletar, tratar e armazenar os dados. Spark ajuda os engenheiros de dados abstraindo a complexidade ao acesso de dados. Ele oferece frameworks fazendo com que o acesso aos dados, seja ele de um arquivo csv, json ou mesmo de um banco de dados relacional, seja muito simples.
+São responsáveis por coletar, tratar e armazenar os dados. Spark ajuda os engenheiros de dados abstraindo a complexidade ao acesso de dados. Ele oferece *frameworks* fazendo com que o acesso aos dados, seja ele de um arquivo csv, json ou mesmo de um banco de dados relacional, seja muito simples.
 
 **Indústria de jogos**
 ![Indústria de jogos](/img/game_industry.jpg)
-O processamento de dados para descobrir padrões e também para o processamento de dados em tempo real de eventos dos jogos online. São características muito importantes para a indústria, pois dessa maneira pode oferecer uma experiência de jogo mais prazerosa para o jogador como também melhorar anúncios personalizados, por exemplo.
+O processamento de dados para descobrir padrões e também para o processamento de dados em tempo real de eventos dos jogos *online*. São características muito importantes para a indústria, pois dessa maneira pode oferecer uma experiência de jogo mais prazerosa para o jogador como também melhorar anúncios personalizados, por exemplo.
 
 Esses são apenas alguns exemplos de quem pode se beneficiar muito com o uso do Spark. 
 
@@ -23,6 +23,6 @@ Analisar dados fazendo buscas específicas de algum dado não é o melhor caso d
 
 Inserir dados com frequência em uma coleção também não é uma boa ideia. Isso se deve ao fato de o Spark criar um novo arquivo a cada inserção de dados nessa coleção. 
 
-Busca por conteúdo também não é um contexto onde o Spark é ideal. Um exemplo de busca por conteúdo seriam aquelas buscas que, conforme o usuário digita, a aplicação autocompleta a busca ou sugere outras buscas. Spark não deve ser usado nesse contexto, pois, para cada request feito, o Spark criaria uma *job*, e para cada *job*, ele iria consultar o banco de dados e carregar todo o conteúdo dessa busca. 
+Busca por conteúdo também não é um contexto onde o Spark é ideal. Um exemplo de busca por conteúdo seriam aquelas buscas que, conforme o usuário digita, a aplicação autocompleta a busca ou sugere outras buscas. Spark não deve ser usado nesse contexto, pois, para cada *request* feito, o Spark criaria uma *job*, e para cada *job*, ele iria consultar o banco de dados e carregar todo o conteúdo dessa busca. 
 Para esse caso, há ferramentas muito mais eficientes como ElasticSearch, por exemplo. 
 
