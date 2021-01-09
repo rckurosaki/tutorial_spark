@@ -33,11 +33,11 @@ Para esse projeto, iremos utilizar o spark shell. Para isso, devemos executar no
 pyspark --conf spark.executor.extraClassPath=sqlite-jdbc-3.34.0.jar --driver-class-path sqlite-jdbc-3.34.0.jar --jars sqlite-jdbc-3.34.0.jar
 ```
 
-Devemos fornecer o arquivo jar que será utilizado como driver para a comunicação com o banco de dados SQLite. Esse arquivo pode ser encontrado neste repositório.
+Devemos fornecer o arquivo jar que será utilizado como *driver* para a comunicação com o banco de dados SQLite. Esse arquivo pode ser encontrado neste repositório.
 
 
 ## Projeto
-Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL (**E**xtract, **T**ransform, **L**oad). Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos armazená-los em outro lugar.
+Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL *(**E**xtract, **T**ransform, **L**oad)*. Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos armazená-los em outro lugar.
 A ideia será extrair os dados que estão em um modelo relacional (banco SQLite), fazer uma agregação para transformar em um modelo de documento e salvar em um arquivo JSON.
 Esse projeto irá utilizar os dados da *[Northwind sample database](https://docs.yugabyte.com/latest/sample-data/northwind/)*. 
 Essa base de dados contém dados de vendas de uma companhia fictícia chamada *Northwind Traders*. Essa empresa importa e exporta produtos alimentícios por todo o mundo.
@@ -47,11 +47,11 @@ Essa base de dados contém dados de vendas de uma companhia fictícia chamada *N
 A base de dados completa contém 14 tabelas em um modelo relacional.  
 ![Diagrama base de dados](/img/diagrama_completo.png)
 Para o nosso projeto, apenas utilizaremos 5 dessas tabelas, sendo elas:
-* customers
-* orders
-* order_details 
-* products
-* categories
+* *customers*
+* *orders*
+* *order_details* 
+* *products*
+* *categories*
 
 ![Tabelas utilizadas no projeto](/img/diagrama_blur.png)
 Nosso objetivo final será agregar todas as compras, produtos e detalhes dos produtos realizadas por um cliente, tendo como resultado final um documento com as seguintes características:
@@ -109,7 +109,7 @@ raw_categories = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./Nort
 raw_order_details = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="order_details").load()
 ```
 `sqlContext.read.format("jdbc")` é utilizado para ler de um banco de dados relacional.
-Em `options` nós passamos em `url` o tipo de banco relacional juntamente com o caminho para o arquivo do banco SQLite. Devemos fornecer também o driver a ser utilizado para a leitura do banco e, por fim, em `dbtable`, fornecemos a tabela que iremos ler do banco. 
+Em `options` nós passamos em `url` o tipo de banco relacional juntamente com o caminho para o arquivo do banco SQLite. Devemos fornecer também o *driver* a ser utilizado para a leitura do banco e, por fim, em `dbtable`, fornecemos a tabela que iremos ler do banco. 
 
 Para ter uma breve noção do conteúdo dos DataFrames, podemos utilizar a função `show()` e passar como argumento a quantidade de tuplas que queremos como retorno.
 Por exemplo:
