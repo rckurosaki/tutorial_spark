@@ -27,7 +27,7 @@ RDD suporta dois tipos de operações: **Transformações** e **Ações**.
 
 Transformações são funções que recebem um RDD como *input* e produz uma ou mais RDDs como *output*. Dessa maneira, as transformações criam novos *datasets* a partir de um *dataset* existente.
 
-Ações retornam o resultado final de uma computação RDD. Esse resultado é retornado para o *driver* do programa ou então escrito em um arquivo ou banco de dados externo. Ações são operações RDD que produzem valores "não RDD", ou seja, ele "*materializa*" um valor em um programa Spark. 
+Ações retornam o resultado final de uma computação RDD. Esse resultado é retornado para o *driver* do programa ou então escrito em um arquivo ou banco de dados externo. Ações são operações RDD que produzem valores "não RDD", ou seja, ele "*materializa*" um valor em um programa Spark. [1](https://spark.apache.org/docs/latest/rdd-programming-guide.html)[2](https://www.educba.com/rdd-in-spark/)[3](https://obstkel.com/apache-spark-concepts)[4](https://towardsdatascience.com/spark-71d0bc25a9ba)
 
 
 ## 2.2 Directed Acyclic Graph (DAG)
@@ -46,6 +46,6 @@ No modo local, como o próprio nome diz, rodaremos o Spark no nosso computador o
 **Cluster**
 No modo cluster, o Spark funciona de maneira similar ao Hadoop com a arquitetura Coordenador-Subordinado. O Coordenador é chamado de *driver* e o Subordinado de *Executor*.
 O *driver* mantém os metadados e as outras informações da aplicação, cuidando da distribuição dos dados nos diferentes nós e monitorando o trabalho dos processos subordinados.
-Os nós subordinados executam os códigos e os reporta de volta para seu coordenador.
+Os nós subordinados executam os códigos e os reporta de volta para seu coordenador.[1](https://spark.apache.org/docs/latest/rdd-programming-guide.html)[2](https://www.educba.com/rdd-in-spark/)[3](https://obstkel.com/apache-spark-concepts)[4](https://towardsdatascience.com/spark-71d0bc25a9ba)
 
 ![Arquitetura Spark](/img/spark_arch.png)

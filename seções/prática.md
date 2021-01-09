@@ -33,7 +33,7 @@ Para esse projeto, iremos utilizar o spark shell. Para isso, devemos executar no
 pyspark --conf spark.executor.extraClassPath=sqlite-jdbc-3.34.0.jar --driver-class-path sqlite-jdbc-3.34.0.jar --jars sqlite-jdbc-3.34.0.jar
 ```
 
-Devemos fornecer o arquivo jar que será utilizado como *driver* para a comunicação com o banco de dados SQLite. Esse arquivo pode ser encontrado neste repositório.
+Devemos fornecer o arquivo jar que será utilizado como *driver* para a comunicação com o banco de dados SQLite. Esse arquivo pode ser encontrado neste repositório.[11](https://spark.apache.org/docs/latest/quick-start.html)[12](https://spark.apache.org/docs/latest/api/python/index.html)
 
 
 ## 4.5 Projeto
@@ -100,7 +100,7 @@ sqlCtx = SQLContext(sc)
 ```
 
 ### Leitura das tabelas
-O próximo passo será extrair as tuplas das tabelas do banco de dados SQLite e transformá-las em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.
+O próximo passo será extrair as tuplas das tabelas do banco de dados SQLite e transformá-las em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.[13](https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html)[14](https://stackoverflow.com/questions/40163144/aggregate-dataframe-pyspark)
 ```
 raw_orders = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="orders").load()
 raw_customers = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="customers").load()
