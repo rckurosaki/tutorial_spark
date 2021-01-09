@@ -1,6 +1,17 @@
 # Prática
 
+## Requisitos de configuração da máquina
+
+Apesar do pyspark rodar em *hardware* mais modesto, abaixo estão algumas configurações recomendadas para rodar a ferramenta satisfatóriamente sem lentidão.
+
+|     | Mínimo    | Recomendado | 
+|-----|-----------|-------------|
+| CPU | 2 núcleos | 4 núcleos   | 
+| RAM | 4GB       | 6~8GB       |
+| HD  | 1GB       | 1GB         |
+
 ## Softwares utilizados
+
 Testado e implementado no sistema operacioal Pop!_ OS 20.10 
  - pyspark version 3.0.1
  - python version 3.8.6
