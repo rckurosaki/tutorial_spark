@@ -17,12 +17,25 @@ A intenção do projeto também é disponibilizar esse conhecimento a qualquer u
 
 A documentação está organizada por seções iniciando por uma explicação do que é o Apache Spark, os principais conceitos da ferramenta, alguns casos de uso e por fim um tutorial prático com Spark em um caso de uso específico. Um apêndice foi incluído para complementar o tutorial assim como outras seções por requisito de entrega do projeto em si.
 
-# Conteúdo
+# Sumário
 
-* [Sobre](/seções/sobre.md)
-* [Conceitos](/seções/conceitos.md)
-* [Quando usar e quando não usar o Spark?](/seções/quando_usar.md)
-* [Prática](/seções/prática.md)
-* [Conclusão](/seções/conclusao.md)
-* [Referências](/seções/referências.md)
-* [Apêndice A](/seções/criando_sqlite.md)
+* [1. Sobre](/seções/sobre.md)
+* [2. Conceitos](/seções/conceitos.md)
+    * [2.1 Resilient Distributed Dataset (RDD)](/seções/conceitos.md#2.1-Resilient-Distributed-Dataset-(RDD))
+    * [2.2 Directed Acyclic Graph (DAG)](/seções/conceitos.md#2.2-Directed-Acyclic-Graph-(DAG))
+    * [2.3 Modo de operação](/seções/conceitos.md#2.3-Modo-de-operação)
+* [3. Quando usar e quando não usar o Spark?](/seções/quando_usar.md)
+    * [3.1 Quando usar](/seções/quando_usar.md#3.1-Quando-usar)
+    * [3.2 Quem usa?](/seções/quando_usar.md#3.2-Quem-usa?)
+    * [3.3 Quando não usar](/seções/quando_usar.md#3.3-Quando-não-usar)
+* [4. Prática](/seções/prática.md)
+    * [4.1 Requisitos de configuração da máquina](/seções/prática.md#4.1-Requisitos-de-configuração-da-máquina)
+    * [4.2 Softwares utilizados](/seções/prática.md#4.2-Softwares-utilizados)
+    * [4.3 Instalação do pyspark](/seções/prática.md#4.3-Instalação-do-pyspark)
+    * [4.4 Executar](/seções/prática.md#4.4-Executar)
+    * [4.5 Projeto](/seções/prática.md#4.5-Projeto)
+    * [4.6 Implementação](/seções/prática.md#4.6-Implementação)
+* [5. Conclusão](/seções/conclusao.md)
+* [6. Referências](/seções/referências.md)
+* [7. Apêndice A](/seções/criando_sqlite.md)
+    * [7.1 Montando um banco de dados relacional SQLite](/seções/criando_sqlite.md#7.1-Montando-um-banco-de-dados-relacional-SQLite)

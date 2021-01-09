@@ -1,10 +1,10 @@
-# Conceitos
+# 2 Conceitos
 
 A arquitetura do Apache Spark™ é composta por duas principais abstrações:
 * RDD (*Resilient Distributed Dataset*)
 * DAG (*Directed Acyclic Graph*)
 
-## Resilient Distributed Dataset - RDD
+## 2.1 Resilient Distributed Dataset (RDD)
 * *Resilient*: Tolerância a falhas, sendo capaz de recomputar partições danificadas provenientes de mau funcionamento dos nós;
 * *Distributed*: Distribuído em multiplos nós de um cluster;
 * *Dataset*: Representa as coleções de dados que serão processados. 
@@ -30,14 +30,14 @@ Transformações são funções que recebem um RDD como *input* e produz uma ou 
 Ações retornam o resultado final de uma computação RDD. Esse resultado é retornado para o *driver* do programa ou então escrito em um arquivo ou banco de dados externo. Ações são operações RDD que produzem valores "não RDD", ou seja, ele "*materializa*" um valor em um programa Spark. 
 
 
-## Directed Acyclic Graph (DAG)
+## 2.2 Directed Acyclic Graph (DAG)
 O *driver* Spark identifica as tarefas que podem ser computadas paralelamente e, a partir disso, contrói uma lógica de operações DAG.
 DAG é um conjunto de vértices e arestas, onde os vértices representam os RDDs e as arestas representam as operações que serão aplicadas nesses RDDs. Todas as arestas partem de uma operção anterior para uma próxima na sequência. 
 Ela é um grafo finito direcionado sem ciclos. Esse modelo é uma generalização do modelo MapReduce, porém com otimizações.
 
 ![Esquema DAG](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.3QbSKq1YI0rTGlVGnM3WGgHaD4%26pid%3DApi&f=1)
 
-## Modo de operação
+## 2.3 Modo de operação
 Podemos usar o Spark localmente ou no modo cluster.
 
 **Local**

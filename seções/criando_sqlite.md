@@ -1,4 +1,7 @@
-## Montando um banco de dados relacional SQLite
+# 7 Apêndice A
+
+## 7.1 Montando um banco de dados relacional SQLite
+
 Para montarmos o banco de dados, precisamos dos arquivos csv contendo os dados necessários. Esses arquivos podem ser encontrados [aqui](/arquivos/csv).
 
 Iremos utilizar um script python para criar o banco NorthWind.db.
@@ -36,4 +39,3 @@ Neste caso, o *dataframe* chama um método para converter o *dataframe* em uma t
 
 E pronto! Temos o nosso banco de dados SQLite!
 Como pode ver, os módulos `sqlite3` e `pandas` facilitaram muito o nosso trabalho, abstraindo muito das complexidades que poderíamos encontrar ao criar um novo banco de dados.
-

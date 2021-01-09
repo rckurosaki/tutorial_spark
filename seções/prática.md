@@ -1,6 +1,6 @@
-# Prática
+# 4 Prática
 
-## Requisitos de configuração da máquina
+## 4.1 Requisitos de configuração da máquina
 
 Apesar do pyspark rodar em *hardware* mais modesto, abaixo estão algumas configurações recomendadas para rodar a ferramenta satisfatóriamente sem lentidão.
 
@@ -10,19 +10,19 @@ Apesar do pyspark rodar em *hardware* mais modesto, abaixo estão algumas config
 | RAM | 4GB       | 6~8GB       |
 | HD  | 1GB       | 1GB         |
 
-## Softwares utilizados
+## 4.2 Softwares utilizados
 
 Testado e implementado no sistema operacioal Pop!_ OS 20.10 
  - pyspark version 3.0.1
  - python version 3.8.6
 
-### Instalação do pyspark
+## 4.3 Instalação do pyspark
 Com o python3 instalado no sistema, podemos instalar o pyspark facilmente com o comando:
 ```
 pip3 install pyspark
 ```
 
-## Executar
+## 4.4 Executar
 Devemos primeiramente setar as variáveis de ambiente.
 ```
 export PYSPARK_PYTHON=python3
@@ -36,7 +36,7 @@ pyspark --conf spark.executor.extraClassPath=sqlite-jdbc-3.34.0.jar --driver-cla
 Devemos fornecer o arquivo jar que será utilizado como *driver* para a comunicação com o banco de dados SQLite. Esse arquivo pode ser encontrado neste repositório.
 
 
-## Projeto
+## 4.5 Projeto
 Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL *(**E**xtract, **T**ransform, **L**oad)*. Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos armazená-los em outro lugar.
 A ideia será extrair os dados que estão em um modelo relacional (banco SQLite), fazer uma agregação para transformar em um modelo de documento e salvar em um arquivo JSON.
 Esse projeto irá utilizar os dados da *[Northwind sample database](https://docs.yugabyte.com/latest/sample-data/northwind/)*. 
@@ -80,7 +80,7 @@ Nosso objetivo final será agregar todas as compras, produtos e detalhes dos pro
 }
 ```
 
-## Implementação
+## 4.6 Implementação
 
 ### Banco de dados SQLite
 O banco SQLite se chama NorthWind.db e está disponível [neste repositório](/arquivos). Ele contém apenas as tabelas que serão usadas neste tutorial.

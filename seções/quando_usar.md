@@ -1,8 +1,10 @@
-## Quando usar e quando não usar o Spark?
-### Quando usar
+# 3 Quando usar e quando não usar o Spark?
+
+## 3.1 Quando usar
 A principal motivação de se usar o Spark é quanto temos que processar uma quantidade massiva de dados. Isso se aplica, por exemplo em aplicações de processamento de dados em tempo real , como dados colhidos por sensores, internet das coisas, setor financeiro, entre outros. Pode ser usado para tarefas de aprendizagem de máquina e também na construção de uma ETL.
 
-#### Quem usa?
+## 3.2 Quem usa?
+
 **Cientista de dados**
 ![Ciência de dados](/img/data_science.jpg)
 São responsáveis por tirar insights através da análise de dados. Para que isso possa ser feito, o Spark ajuda os cientistas de dados dando suporte durante grande parte do processo de análise como o acesso aos dados assim como a integração com a aprendizagem de máquina e visualização de dados.
@@ -17,7 +19,7 @@ O processamento de dados para descobrir padrões e também para o processamento 
 
 Esses são apenas alguns exemplos de quem pode se beneficiar muito com o uso do Spark. 
 
-### Quando não usar
+## 3.3 Quando não usar
 
 Analisar dados fazendo buscas específicas de algum dado não é o melhor caso de uso. Isso porque o Spark terá de carregar os dados em memória e depois fazer a busca pelo dado específico a cada busca desejada, ou seja, a performance não será boa. Neste caso, é recomendado o uso de um banco de dados! 
 
