@@ -11,5 +11,5 @@ A generalidade significa que ele pode ser usado para várias coisas, como execut
 Facilidade de uso, o Spark oferece mais de 80 operadores de alto nível que facilitam a construção de *pipelines* nas linguagens Java, Scala, Python, R e SQL. E você pode usá-lo interativamente a partir dos *shells* Scala, Python, R e SQL.
 
 
-[Voltar para Sumário](/tutorial_spark#sumário)  
+[Voltar para Sumário](/#sumário)  
 [Próxima Seção - Conceitos](/seções/conceitos.md)

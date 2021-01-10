@@ -32,5 +32,5 @@ Busca por conteúdo também não é um contexto onde o Spark é ideal. Um exempl
 Para esse caso, há ferramentas muito mais eficientes como ElasticSearch, por exemplo.[[6]](https://blog.knoldus.com/do-you-really-need-spark-think-again/)[[7]](https://towardsdatascience.com/the-what-why-and-when-of-apache-spark-6c27abc19527)[[8]](https://www.pepperdata.com/blog/five-mistakes-to-avoid-when-using-spark/)
 
 
-[Voltar para Sumário](/tutorial_spark#sumário)  
+[Voltar para Sumário](/#sumário)  
 [Próxima Seção - Prática](/seções/prática.md)

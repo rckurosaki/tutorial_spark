@@ -21,4 +21,4 @@
  - 14 https://stackoverflow.com/questions/40163144/aggregate-dataframe-pyspark
 
 
-[Voltar para Sumário](/tutorial_spark#sumário)
+[Voltar para Sumário](/#sumário)

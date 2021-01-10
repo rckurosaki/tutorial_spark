@@ -41,4 +41,4 @@ E pronto! Temos o nosso banco de dados SQLite!
 Como pode ver, os módulos `sqlite3` e `pandas` facilitaram muito o nosso trabalho, abstraindo muito das complexidades que poderíamos encontrar ao criar um novo banco de dados.
 
 
-[Voltar para Sumário](/tutorial_spark#sumário)
+[Voltar para Sumário](/#sumário)
