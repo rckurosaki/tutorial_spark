@@ -36,7 +36,7 @@ DAG é um conjunto de vértices e arestas, onde os vértices representam os RDDs
 Ela é um grafo finito direcionado sem ciclos. Esse modelo é uma generalização do modelo MapReduce, porém com otimizações.
 
 ![Esquema DAG](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.3QbSKq1YI0rTGlVGnM3WGgHaD4%26pid%3DApi&f=1)  
-*** Figura 1: Esquema DAG ***
+***Figura 1: Esquema DAG***
 
 ## 2.3. Modo de operação
 Podemos usar o Spark localmente ou no modo cluster.
@@ -50,4 +50,4 @@ O *driver* mantém os metadados e as outras informações da aplicação, cuidan
 Os nós subordinados executam os códigos e os reporta de volta para seu coordenador.[[1]](https://spark.apache.org/docs/latest/rdd-programming-guide.html)[[2]](https://www.educba.com/rdd-in-spark/)[[3]](https://obstkel.com/apache-spark-concepts)[[4]](https://towardsdatascience.com/spark-71d0bc25a9ba)
 
 ![Arquitetura Spark](/img/spark_arch.png)  
-*** Figura 2: Arquitetura do Apache Spark™ ***
+***Figura 2: Arquitetura do Apache Spark™***
