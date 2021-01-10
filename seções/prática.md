@@ -278,5 +278,5 @@ customer_agg.coalesce(1).write.format('json').save('./customers_agg.json')
 Quando executado tal comando, no diretório atual será criada um diretório com nome `customers_agg` contendo o arquivo JSON com todos os dados agregados.
 
 
-[Voltar para Sumário](/#sumário)  
+[Voltar para Sumário](/README.md#sumário)  
 [Próxima Seção - Conclusão](/seções/conclusao.md)
