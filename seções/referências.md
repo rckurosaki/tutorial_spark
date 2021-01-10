@@ -19,3 +19,6 @@
  - 12 https://spark.apache.org/docs/latest/api/python/index.html
  - 13 https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html
  - 14 https://stackoverflow.com/questions/40163144/aggregate-dataframe-pyspark
+
+
+[Voltar para Sumário](/tutorial_spark#sumário)
