@@ -9,3 +9,7 @@ Ele nasceu para ser mais rápido do que as abordagens anteriores que trabalham c
 A generalidade significa que ele pode ser usado para várias coisas, como executar SQL distribuído, criar *pipelines* de dados, carregar dados em um banco de dados SQL ou NOSQL, executar algoritmos de aprendizado de máquina, trabalhar com gráficos ou fluxos de dados e muito mais.
 
 Facilidade de uso, o Spark oferece mais de 80 operadores de alto nível que facilitam a construção de *pipelines* nas linguagens Java, Scala, Python, R e SQL. E você pode usá-lo interativamente a partir dos *shells* Scala, Python, R e SQL.
+
+
+[Voltar para Sumário](/tutorial_spark#sumário)
+[Próxima Seção - Conceitos](/seções/conceitos.md)

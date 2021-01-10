@@ -9,3 +9,7 @@ entender os conceitos básicos e ganhar experiência utilizando a plataforma Apa
 
 Não tivemos nenhuma dificuldade impeditiva durante a produção. Infelizmente não conseguimos demonstrar todas as capacidades de processamento distribuído e paralelizado do Spark que são seus pontos fortes, 
 mas acreditamos na utilidade do tutorial, compartilhamento de conhecimento e induzimos curiosidade através dos textos das possibilidades da ferramenta.
+
+
+[Voltar para Sumário](/tutorial_spark#sumário)
+[Próxima Seção - Referências](/seções/referências.md)

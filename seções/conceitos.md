@@ -51,3 +51,7 @@ Os nós subordinados executam os códigos e os reporta de volta para seu coorden
 
 ![Arquitetura Spark](/img/spark_arch.png)  
 ***Figura 2: Arquitetura do Apache Spark™***
+
+
+[Voltar para Sumário](/tutorial_spark#sumário)
+[Próxima Seção - Quando usar e quando não usar o Spark?](/seções/quando_usar.md)

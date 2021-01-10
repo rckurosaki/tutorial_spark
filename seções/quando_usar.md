@@ -31,3 +31,6 @@ Inserir dados com frequência em uma coleção também não é uma boa ideia. Is
 Busca por conteúdo também não é um contexto onde o Spark é ideal. Um exemplo de busca por conteúdo seriam aquelas buscas que, conforme o usuário digita, a aplicação autocompleta a busca ou sugere outras buscas. Spark não deve ser usado nesse contexto, pois, para cada *request* feito, o Spark criaria uma *job*, e para cada *job*, ele iria consultar o banco de dados e carregar todo o conteúdo dessa busca. 
 Para esse caso, há ferramentas muito mais eficientes como ElasticSearch, por exemplo.[[6]](https://blog.knoldus.com/do-you-really-need-spark-think-again/)[[7]](https://towardsdatascience.com/the-what-why-and-when-of-apache-spark-6c27abc19527)[[8]](https://www.pepperdata.com/blog/five-mistakes-to-avoid-when-using-spark/)
 
+
+[Voltar para Sumário](/tutorial_spark#sumário)
+[Próxima Seção - Prática](/seções/prática.md)
