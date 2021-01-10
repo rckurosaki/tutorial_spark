@@ -32,10 +32,11 @@ Ações retornam o resultado final de uma computação RDD. Esse resultado é re
 
 ## 2.2 Directed Acyclic Graph (DAG)
 O *driver* Spark identifica as tarefas que podem ser computadas paralelamente e, a partir disso, contrói uma lógica de operações DAG.
-DAG é um conjunto de vértices e arestas, onde os vértices representam os RDDs e as arestas representam as operações que serão aplicadas nesses RDDs. Todas as arestas partem de uma operção anterior para uma próxima na sequência. 
+DAG é um conjunto de vértices e arestas, onde os vértices representam os RDDs e as arestas representam as operações que serão aplicadas nesses RDDs. Na Figura 1 mostra como todas as arestas partem de uma operação anterior para uma próxima na sequência. 
 Ela é um grafo finito direcionado sem ciclos. Esse modelo é uma generalização do modelo MapReduce, porém com otimizações.
 
 ![Esquema DAG](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.3QbSKq1YI0rTGlVGnM3WGgHaD4%26pid%3DApi&f=1)
+*** Figura 1: Esquema DAG ***
 
 ## 2.3 Modo de operação
 Podemos usar o Spark localmente ou no modo cluster.
@@ -44,8 +45,9 @@ Podemos usar o Spark localmente ou no modo cluster.
 No modo local, como o próprio nome diz, rodaremos o Spark no nosso computador ou em uma instância a nuvem. Esse modo é ideal para aprender a utilizar tudo o que ela tem para oferecer. A [prática](./prática.md) desse tutorial foi construída para ser executada em modo local.
 
 **Cluster**
-No modo cluster, o Spark funciona de maneira similar ao Hadoop com a arquitetura Coordenador-Subordinado. O Coordenador é chamado de *driver* e o Subordinado de *Executor*.
+Como mostrado na Figura 2, no modo cluster o Spark funciona de maneira similar ao Hadoop com a arquitetura Coordenador-Subordinado. O Coordenador é chamado de *driver* e o Subordinado de *Executor*.
 O *driver* mantém os metadados e as outras informações da aplicação, cuidando da distribuição dos dados nos diferentes nós e monitorando o trabalho dos processos subordinados.
 Os nós subordinados executam os códigos e os reporta de volta para seu coordenador.[1](https://spark.apache.org/docs/latest/rdd-programming-guide.html)[2](https://www.educba.com/rdd-in-spark/)[3](https://obstkel.com/apache-spark-concepts)[4](https://towardsdatascience.com/spark-71d0bc25a9ba)
 
 ![Arquitetura Spark](/img/spark_arch.png)
+*** Figura 2: Arquitetura do Apache Spark™ ***

@@ -44,9 +44,12 @@ Essa base de dados contém dados de vendas de uma companhia fictícia chamada *N
 
 
 ### A base de dados
-A base de dados completa contém 14 tabelas em um modelo relacional.  
+Como mostra o diagrama da Figura 1, a base de dados completa contém 14 tabelas em um modelo relacional.
 ![Diagrama base de dados](/img/diagrama_completo.png)
-Para o nosso projeto, apenas utilizaremos 5 dessas tabelas, sendo elas:
+*** Figura 1: Diagrama da base de dados***
+
+
+Para o nosso projeto, apenas utilizaremos 5 dessas tabelas como mostrado na Figura 2, sendo elas:
 * *customers*
 * *orders*
 * *order_details* 
@@ -54,6 +57,9 @@ Para o nosso projeto, apenas utilizaremos 5 dessas tabelas, sendo elas:
 * *categories*
 
 ![Tabelas utilizadas no projeto](/img/diagrama_blur.png)
+*** Figura 2: Tabelas que serão utilizadas na base de dados ***
+
+
 Nosso objetivo final será agregar todas as compras, produtos e detalhes dos produtos realizadas por um cliente, tendo como resultado final um documento com as seguintes características:
 
 ```
@@ -169,12 +175,13 @@ only showing top 3 rows
 ```
 Antes, a tabela *Orders* continha 14 colunas. Agora contém apenas 2. Da mesma forma, filtramos todas as outras tabelas da mesma maneira selecionando apenas o que nos é relevante.
 
-Esse é o resultado que temos:
+Na Figura 3 podemos observar o resultado que temos:
 ![Clean tables](/img/clean_tables.png)
+*** Figura 3: Tabelas "limpas" ***
 
-### Criando join entre tabelas
+### Criando junção entre tabelas
 Agora que temos apenas os dados que nos é relevante para o projeto, devemos começar a agregação de dados para poder criar o documento JSON.
-O primeiro passo será fazer um `join` entre as tabelas *categories* e *products*. 
+O primeiro passo será fazer uma `junção` entre as tabelas *categories* e *products*. 
 A maneira mais simples de se conseguir essa junção é usar comando SQL!
 Para poder consultar as tabelas usando comandos SQL, devemos inicialmente criar um buffer em memória que nos permite rodar *queries* nessas tabelas temporárias. 
 ```
@@ -183,7 +190,7 @@ products.createOrReplaceTempView("tmp_products")
 ``` 
 Neste caso, criamos 2 tabelas temporárias. Uma para `categories` com o nome `tmp_categories` e uma para `products` com o nome `tmp_products`.
 
-Dessa maneira conseguimos fazer o `join` nas duas tabelas e armazenar o resultado em um novo DataFrame.
+Dessa maneira conseguimos fazer a `junção` nas duas tabelas e armazenar o resultado em um novo DataFrame.
 ```
 categories_orders_join = spark.sql("SELECT tmp_categories.CategoryID, \
 tmp_categories.CategoryName, tmp_categories.Description, tmp_products.ProductID, \
