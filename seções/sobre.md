@@ -1,4 +1,4 @@
-# 1 Sobre
+# 1. Sobre
 
 Apache Spark™ é um sistema de processamento distribuído de código aberto usado para *big data*. Ele permite que você processe conjuntos grandes de dados mais rapidamente, dividindo o trabalho em partes e atribuindo essas partes aos recursos computacionais.
 

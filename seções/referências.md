@@ -1,4 +1,4 @@
-# 6 Referências
+# 6. Referências
 
 *** Conceitos ***
 - 1. https://spark.apache.org/docs/latest/rdd-programming-guide.html
