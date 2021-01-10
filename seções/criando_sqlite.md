@@ -1,6 +1,6 @@
 # 7. Apêndice A
 
-## 7.1. Montando um banco de dados relacional SQLite
+## 7.1. Montando um banco de dados relacional usando SQLite
 
 Para montarmos o banco de dados, precisamos dos arquivos csv contendo os dados necessários. Esses arquivos podem ser encontrados [aqui](/arquivos/csv).
 
