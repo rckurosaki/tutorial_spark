@@ -37,8 +37,9 @@ Devemos fornecer o arquivo jar que será utilizado como *driver* para a comunica
 
 
 ## 4.5. Projeto
-Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL *(**E**xtract, **T**ransform, **L**oad)*. Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos armazená-los em outro lugar.
-A ideia será extrair os dados que estão em um modelo relacional (banco SQLite), fazer uma agregação para transformar em um modelo de documento e salvar em um arquivo JSON.
+Para a parte prática do tutorial, iremos montar um projeto que implementa um ETL *(**E**xtract, **T**ransform, **L**oad)*. Isto é, iremos extrair os dados de uma fonte, realizaremos o processamento desses dados e depois iremos salvá-los em um arquivo.
+A ideia será extrair os dados que estão armazenados em um banco de dados relacional SQLite, agregá-los, transformá-los em um modelo de documento e salvar em um arquivo JSON.
+A agregação será um processo de "desnormalização" dos dados, onde juntaremos em um documento todos os dados relevantes a um consumidor. Veremos mais detalhes no decorrer do tutorial.
 Esse projeto irá utilizar os dados da *[Northwind sample database](https://docs.yugabyte.com/latest/sample-data/northwind/)*. 
 Essa base de dados contém dados de vendas de uma companhia fictícia chamada *Northwind Traders*. Essa empresa importa e exporta produtos alimentícios por todo o mundo.
 
@@ -88,9 +89,9 @@ Nosso objetivo final será agregar todas as compras, produtos e detalhes dos pro
 
 ## 4.6. Implementação
 
-### Banco de dados SQLite
-O banco SQLite se chama NorthWind.db e está disponível [neste repositório](/arquivos). Ele contém apenas as tabelas que serão usadas neste tutorial.
-Caso queira aprender como criar esse banco de dados, veja o [Apêndice A - Montando um banco de dados realacional SQLite](criando_sqlite.md).
+### Banco de dados relacional
+O banco armazenado em SQLite se chama NorthWind.db e está disponível [neste repositório](/arquivos). Ele contém apenas as tabelas que serão usadas neste tutorial.
+Caso queira aprender como criar esse banco de dados, veja o [Apêndice A - Montando um banco de dados realacional usando SQLite](criando_sqlite.md).
 
 
 ### Criação de uma sessão Spark
@@ -106,7 +107,7 @@ sqlCtx = SQLContext(sc)
 ```
 
 ### Leitura das tabelas
-O próximo passo será extrair as tuplas das tabelas do banco de dados SQLite e transformá-las em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.[[13]](https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html)[[14]](https://stackoverflow.com/questions/40163144/aggregate-dataframe-pyspark)
+O próximo passo será extrair as tuplas das tabelas do banco de dados relacional e transformá-las em um DataFrame, uma coleção de dados distribuídos organizados por colunas. Essa é uma estrutura de dados similar a uma tabela de um banco de dados relacional.[[13]](https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html)[[14]](https://stackoverflow.com/questions/40163144/aggregate-dataframe-pyspark)
 ```
 raw_orders = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="orders").load()
 raw_customers = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="customers").load()
@@ -115,7 +116,7 @@ raw_categories = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./Nort
 raw_order_details = sqlContext.read.format("jdbc").options(url ="jdbc:sqlite:./NorthWind.db", driver="org.sqlite.JDBC", dbtable="order_details").load()
 ```
 `sqlContext.read.format("jdbc")` é utilizado para ler de um banco de dados relacional.
-Em `options` nós passamos em `url` o tipo de banco relacional juntamente com o caminho para o arquivo do banco SQLite. Devemos fornecer também o *driver* a ser utilizado para a leitura do banco e, por fim, em `dbtable`, fornecemos a tabela que iremos ler do banco. 
+Em `options` nós passamos em `url` o tipo de banco relacional juntamente com o caminho para o arquivo SQLite. Devemos fornecer também o *driver* a ser utilizado para a leitura do banco e, por fim, em `dbtable`, fornecemos a tabela que iremos ler do banco. 
 
 Para ter uma breve noção do conteúdo dos DataFrames, podemos utilizar a função `show()` e passar como argumento a quantidade de tuplas que queremos como retorno.
 Por exemplo:
