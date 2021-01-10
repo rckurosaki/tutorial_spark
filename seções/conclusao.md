@@ -11,5 +11,5 @@ Não tivemos nenhuma dificuldade impeditiva durante a produção. Infelizmente n
 mas acreditamos na utilidade do tutorial, compartilhamento de conhecimento e induzimos curiosidade através dos textos das possibilidades da ferramenta.
 
 
-[Voltar para Sumário](/tutorial_spark#sumário)
+[Voltar para Sumário](/tutorial_spark#sumário)  
 [Próxima Seção - Referências](/seções/referências.md)

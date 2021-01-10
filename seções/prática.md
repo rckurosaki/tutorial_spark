@@ -12,7 +12,7 @@ Apesar do pyspark rodar em *hardware* mais modesto, abaixo estão algumas config
 
 ## 4.2. Softwares utilizados
 
-Testado e implementado no sistema operacioal Pop!_ OS 20.10 
+Testado e implementado no sistema operacional Pop!_ OS 20.10 
  - pyspark version 3.0.1
  - python version 3.8.6
 
@@ -278,5 +278,5 @@ customer_agg.coalesce(1).write.format('json').save('./customers_agg.json')
 Quando executado tal comando, no diretório atual será criada um diretório com nome `customers_agg` contendo o arquivo JSON com todos os dados agregados.
 
 
-[Voltar para Sumário](/tutorial_spark#sumário)
+[Voltar para Sumário](/tutorial_spark#sumário)  
 [Próxima Seção - Conclusão](/seções/conclusao.md)
